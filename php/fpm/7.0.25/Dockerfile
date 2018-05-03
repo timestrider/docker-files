@@ -2,7 +2,8 @@ FROM php:7.0.25-fpm
 
 MAINTAINER timestrider
 
-RUN useradd -g www-data -s /usr/sbin/nologin git;
+RUN groupmod -g 1000 www-data ;\ 
+	useradd -g www-data -u 1000 -s /usr/sbin/nologin git;
 
 ENV PHP_EXTRA_CONFIGURE_ARGS '--enable-fpm --with-fpm-user=git --with-fpm-group=www-data'
 
