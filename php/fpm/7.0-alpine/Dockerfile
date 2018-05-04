@@ -9,6 +9,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 	apk --no-cache add \
         freetype-dev \
         jpeg-dev \
+		libjpeg-turbo-dev \
         libmcrypt-dev \
 		libxml2-dev \
 		openssl-dev \
@@ -18,5 +19,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 		curl-dev;
 		
 RUN docker-php-ext-install iconv mcrypt mbstring \
-		pdo pdo_mysql mysqli xml curl zip ftp opcache pdo_pgsql readline gd \
+		pdo pdo_mysql mysqli xml curl zip ftp opcache pdo_pgsql readline \
+	&& docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
+	&& docker-php-ext-install gd \
 	&& docker-php-source delete; \
