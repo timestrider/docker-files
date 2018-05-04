@@ -15,7 +15,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 		zip \
 		libedit-dev \
 		postgresql-dev \
-		curl-dev \
-    && docker-php-ext-install iconv mcrypt mbstring \
+		curl-dev;
+		
+RUN docker-php-ext-install iconv mcrypt mbstring \
 		pdo pdo_mysql mysqli xml curl zip ftp opcache pdo_pgsql readline gd \
 	&& docker-php-source delete; \
