@@ -13,6 +13,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         libmcrypt-dev \
 		libxml2-dev \
 		openssl-dev \
+		bzip2-dev \
 		zip \
 		libedit-dev \
 		postgresql-dev \

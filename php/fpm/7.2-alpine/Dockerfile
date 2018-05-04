@@ -14,6 +14,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 		postgresql-dev \
 		libressl-dev \
 		zip \
+		bzip2-dev \
 		libedit-dev \
 		curl-dev;
 		
