@@ -12,15 +12,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 		libjpeg-turbo-dev \
         libmcrypt-dev \
 		libxml2-dev \
-		openssl-dev \
-		bzip2-dev \
-		zip \
-		libedit-dev \
 		postgresql-dev \
+		libressl-dev \
+		bzip2-dev \
+		libedit-dev \
 		curl-dev;
 		
-RUN docker-php-ext-install iconv mcrypt mbstring \
-		pdo pdo_mysql mysqli xml curl zip ftp opcache pdo_pgsql readline \
-	&& docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
-	&& docker-php-ext-install gd \
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
+	&& docker-php-ext-install gd iconv mcrypt mbstring \
+		pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline \
 	&& docker-php-source delete; \
