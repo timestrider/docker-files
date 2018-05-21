@@ -12,8 +12,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 		libjpeg-turbo-dev \
         libmcrypt-dev \
 		libxml2-dev \
+        openssl-dev \
 		postgresql-dev \
-		libressl-dev \
 		bzip2-dev \
 		libedit-dev \
 		curl-dev;
