@@ -18,6 +18,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         curl-dev;
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
-    && docker-php-ext-install gd iconv mbstring \
-    pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline \
-    && docker-php-source delete; \
+&& docker-php-ext-install gd iconv mbstring \
+pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline \
+&& docker-php-source delete; \
