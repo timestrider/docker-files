@@ -13,9 +13,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         libmcrypt-dev \
         libxml2-dev \
         libressl-dev \
+        postgresql-dev \
         bzip2-dev \
         libedit-dev \
-        postgresql-dev \
         curl-dev;
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
