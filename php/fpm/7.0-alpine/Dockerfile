@@ -2,10 +2,8 @@ FROM php:7.0-fpm-alpine
 
 MAINTAINER timestrider
 
-ENV PHP_EXTRA_CONFIGURE_ARGS '--enable-fpm --with-fpm-user=git --with-fpm-group=www-data'
-
+RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories; \
-    adduser -g www-data -u 1000 -D -s /sbin/nologin git; \
     apk --no-cache add \
         freetype-dev \
         jpeg-dev \
