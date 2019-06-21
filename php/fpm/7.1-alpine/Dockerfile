@@ -15,9 +15,9 @@ RUN apk --no-cache add \
         libedit-dev \
         tzdata  \
         curl-dev;
-        
-RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
     && docker-php-ext-install gd soap iconv mcrypt mbstring \
     pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline \
-    && docker-php-source delete; 
+    && docker-php-source delete;       
+RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
+ 

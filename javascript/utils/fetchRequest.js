@@ -1,4 +1,4 @@
-export default class fetchRequest {
+class fetchRequest {
 
   static getData = (url='', data={}) => {
     // Default options are marked with *
@@ -33,7 +33,11 @@ export default class fetchRequest {
           return []
         return response.json()
       }
-    )
+    ).then( r => {
+      if(typeof r.original !=='undefined')
+        return r.original
+      return r
+    })
     .catch( e => { console.log(e) }) // parses response to JSON
   }
 
@@ -51,7 +55,17 @@ export default class fetchRequest {
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // *client, no-referrer
     })
-    .then(response => response.json()).catch( e => { console.log(e) }) // parses response to JSON
+    .then((response) => {
+        if(response.length <= 0)
+          return []
+        return response.json()
+      }
+    ).then( r => {
+      if(typeof r.original !=='undefined')
+        return r.original
+      return r
+    })
+    .catch( e => { console.log(e) }) // parses response to JSON
   }
 
   static deleteData = (url='', data={}) => {
@@ -68,7 +82,19 @@ export default class fetchRequest {
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // *client, no-referrer
     })
-    .then(response => response.json()).catch( e => { console.log(e) }) // parses response to JSON
+    .then((response) => {
+        if(response.length <= 0)
+          return []
+        return response.json()
+      }
+    ).then( r => {
+      if(typeof r.original !=='undefined')
+        return r.original
+      return r
+    })
+    .catch( e => { console.log(e) }) // parses response to JSON
   }
 
 }
+
+export default fetchRequest
