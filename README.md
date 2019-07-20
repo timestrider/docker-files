@@ -1,2 +1,2 @@
 # docker-files
-个人常用的dockerfiles。
+personal use only
