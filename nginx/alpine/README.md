@@ -1,2 +1,5 @@
-### 关于用法
-这个镜像基于nginx:alpine，修改了下linux的timezone。因为如果不改这玩意所有基于localtime的日志都是+0区,会被运营靠北。
+### about
+nginx's alpine image has default timezone +0. It may cause some log-time-problem to other timezone user. so you can use  
+`ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ`  
+But in alpine image, there is no zoninfo. so you need install it first:  
+`apk --no-cache add tzdata;`
