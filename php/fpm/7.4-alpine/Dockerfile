@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 MAINTAINER timestrider
 
@@ -7,16 +7,17 @@ RUN apk --no-cache add \
         freetype-dev \
         jpeg-dev \
         libjpeg-turbo-dev \
-        libmcrypt-dev \
         libxml2-dev \
-        libressl-dev \
         postgresql-dev \
+        libressl-dev \
         bzip2-dev \
         libedit-dev \
         tzdata  \
+        libzip-dev \
+        oniguruma-dev \
         curl-dev;
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
-RUN docker-php-ext-install gd soap iconv mcrypt mbstring pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline;
-RUN docker-php-source delete;       
+
 RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
- 
+# RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ &&\
+RUN docker-php-ext-install gd soap iconv mbstring pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline;
+RUN docker-php-source delete;
