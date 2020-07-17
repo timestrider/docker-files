@@ -15,8 +15,8 @@ RUN apk --no-cache add \
         libedit-dev \
         tzdata  \
         curl-dev;
+RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/;
 RUN docker-php-ext-install gd soap iconv mcrypt mbstring pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline;
 RUN docker-php-source delete;
-RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 RUN set -xe && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS && pecl install -o -f redis && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini && rm -rf /usr/share/php && rm -rf /tmp/* && apk del  .phpize-deps
