@@ -28,3 +28,4 @@ EXPOSE 8000
 CMD ["sh","-c","gunicorn -b 0.0.0.0:8000 ${appName}.wsgi"]
 
 # 用的时候将项目目录卷挂载到/www/app。建议将文件卷挂载到/www/assets
+# docker run -d -v ~/www/lab/python/django/hello:/www/app -e appName=hello dagun
