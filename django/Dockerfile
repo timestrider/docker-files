@@ -18,8 +18,7 @@ RUN apk add --no-cache tzdata \
     && rm -rf /var/cache/apk/* \
     && rm -rf /root/.cache \
     && rm -rf /tmp/*
-RUN mkdir -p /www/webapp \
-    && export PYTHONPATH=$PYTHONPATH:/www/webapp
+RUN mkdir -p /www/webapp && export PYTHONPATH=$PYTHONPATH:/www/webapp
 WORKDIR /www/webapp
 
 ARG appName=mysite
